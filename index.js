@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', function() {
   
   // 抓到 Form: item-form
   const itemForm = document.forms['item-form']
+  let storage = []
 
   itemForm.addEventListener('submit', function(e) {
 
@@ -33,6 +34,19 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     // 清除內容
     itemForm.reset()
+    
+    // 單次 submit 塞進 array
+    storage.push(inputTotal)
+
+    // Object 塞進 localStorage
+    localStorage.setItem('records',JSON.stringify(storage))
+
+    // localStorage 拿出 object
+    let getStorage = JSON.parse(localStorage.getItem("records"))
+
+    // console.log(getStorage)
+
+
 
   })
 })
